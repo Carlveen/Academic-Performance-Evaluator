@@ -48,4 +48,7 @@ Follow these instructions to set up the APE project on your local machine.
 
 3. Open your web browser and access the app at http://localhost:8000/.
 
+![image](https://github.com/Carlveen/Academic-Performance-Evaluator/assets/105159605/85328870-feac-4fd3-a5b4-bd24dfe15544)
+
+
 
