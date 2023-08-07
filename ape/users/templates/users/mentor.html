@@ -1,0 +1,38 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+<head>
+    <title>{% block title %}Mentor{% endblock %}</title>
+</head>
+
+{% block content %}
+<section id="mentor">
+<ul class="mentor-list">
+ <li>
+   <a href="https://wa.me/254740642794?text=Hi%20Mr.%20Peter,%20I%20reached%20out%20to%20you%20via%20Academic%20Performance%20Evaluator%20website." target="_blank">
+     <img src="{% static 'img/parnold.png' %}" alt="Mr Peter Arnold">
+     <h3>Mr Peter Arnold</h3>
+     <span>Computer Science</span>
+     <p>+254 740 642794</p>
+   </a>
+ </li>
+ <li>
+   <a href="https://wa.me/254740642794?text=Hi%20Calvin,%20I%20reached%20out%20to%20you%20via%20Academic%20Performance%20Evaluator%20website." target="_blank">
+     <img src="{% static 'img/calvin.png' %}" alt="Calvin Simiyu(Developer)">
+     <h3>Calvin Simiyu(Developer)</h3>
+     <span>Computer Science</span>
+     <p>+254 740 642794</p>
+   </a>
+ </li>
+ <li>
+   <a href="https://wa.me/254798622333?text=Hi%20Dr Jose%203,%20I%20reached%20out%20to%20you%20via%20Academic%20Performance%20Evaluator%20website." target="_blank">
+     <img src="{% static 'img/carmago.png' %}" alt="Dr Jose Carmago">
+     <h3>Dr.Joseph Irungu</h3>
+     <span>Education Science</span>
+     <p>+254 798 622333</p>
+   </a>
+ </li>
+</ul>
+</section>
+{% endblock %}

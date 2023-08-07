@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Courses in Nursing{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cs.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+  </head>
+  <body>
+    <header class="cs" style="background-color: #007bff; padding: 20px;">
+        <a href="{% url 'field_study' %}" style="text-decoration: none;">
+            <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+              Back
+            </button>
+          </a>
+          
+      <h2 style="font-size: 24px; font-weight: bold; margin-top: 20px;">Choose a course from this section, attempt the quizzes and have your evaluation</h2>
+    </header>
+
+    <main>
+      <div class="courses">
+        <div class="course">
+            <h3>Atomic Structure</h3>
+            <p>Have an appraisal of your<br> understanding of Atomic Structure</p>
+          <a href="#">Take Quiz</a>
+        </div>
+        <div class="course">
+            <h3>Chemical bonding and structure</h3>
+            <p>Have an appraisal of your<br> understanding of Chemical bonding and structure</p>
+          <a href="#">Take Quiz</a>
+        </div>
+        <div class="course">
+            <h3>Physical chemistry II</h3>
+            <p>Have an appraisal of your<br> understanding of Physical chemistry II</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Organic chemistry II</h3>
+              <p>Have an appraisal of your<br> understanding of Organic chemistry II</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Nuclear and Radiochemistry</h3>
+              <p>Have an appraisal of your<br> understanding of Nuclear and Radiochemistry</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Analytical chemistry I</h3>
+              <p>Have an appraisal of your<br> understanding of Analytical chemistry I</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Computers in chemistry</h3>
+              <p>Have an appraisal of your<br> understanding of Computers in chemistry</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Organic chemistry III</h3>
+              <p>Have an appraisal of your<br> understanding of  Organic chemistry III</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Natural product chemistry</h3>
+              <p>Have an appraisal of your<br> understanding of Natural product chemistry</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Reaction kinetics</h3>
+              <p>Have an appraisal of your<br> understanding of Reaction kinetics</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Polymer processing</h3>
+              <p>Have an appraisal of your<br> understanding of Polymer processing</p>
+          <a href="#">Take Quiz</a>
+        </div>
+          <div class="course">
+              <h3>Structural chemistry</h3>
+            <p>Have an appraisal of your<br> understanding of Structural chemistry</p>
+          <a href="#">Take Quiz</a>
+        </div>

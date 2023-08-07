@@ -1,0 +1,58 @@
+{% extends 'users/base.html' %}
+
+{% block title %}
+    {{ course.title }} Quiz Results
+{% endblock %}
+
+{% block content %}
+    <div style="background-color: #f2f2f2; padding: 10px;">
+        <h2 style="color: #4CAF50">{{ course.title }} Quiz Results</h2>
+        {% if num_questions == 0 %}
+            <p style="font-size: 18px;">There are no questions in this quiz.</p>
+        {% else %}
+            <p style="font-size: 18px;">You answered {{ num_correct }} out of {{ num_questions }} questions correctly.</p>
+            <ul style="list-style-type: none; padding-left: 0;">
+                {% for question in quiz_questions %}
+                    <li style="margin-bottom: 10px;">
+                        <h4 style="color: blue; font-weight: bold;">{{ forloop.counter }}. {{ question.question_text }}</h4><br>
+                        {% if question.code_snippet %}
+                            <pre><code>{{ question.code_snippet }}</code></pre>
+                        {% endif %}<br>
+                        <p style="margin-top: 0px; margin-bottom: 5px;" class="{% if question.question_type == 'CS'%}{% endif %}"><b>Your answer:</b> <em>{{ question.selected_answer }}</em></p>
+                        {% if question.is_correct %}
+                            <p style="margin-top: 5px; margin-bottom: 5px; color: green;">Correct!</p>
+                        {% else %}
+                            <p style="margin-top: 5px; margin-bottom: 5px; color: red;"><b>Incorrect. The correct answer was:</b> <em>{{ question.correct_answer }}</em>.</p>
+                        {% endif %}
+                        {% if question.selected_choice and question.selected_choice.code_snippet %}
+                            <p style="margin-top: 5px; margin-bottom: 5px;"><b>Your selected code snippet:</b></p>
+                            <pre><code>{{ question.selected_choice.code_snippet }}</code></pre>
+                        {% endif %}
+                        {% if question.selected_choice and question.selected_choice.choice_text %}
+                            <p style="margin-top: 5px; margin-bottom: 5px;"><b>Your selected choice:</b></p>
+                            <p>{{ question.selected_choice.choice_text }}</p>
+                        {% endif %}
+                        {% if question.choices %}
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                {% for choice in question.choices %}
+                                    <li style="margin-top: 10px;">
+                                        <p style="margin-bottom: 5px;" class="{% if choice.is_correct %}correct{% endif %}">
+                                            <input type="radio" {% if choice == question.selected_choice %}checked{% endif %} disabled>
+                                            <label>{{ choice.choice_text }}</label>
+                                        </p>
+                                        {% if choice.code_snippet %}
+                                            <pre><code>{{ choice.code_snippet }}</code></pre>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <br> <!-- add a line break for space -->
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a href="{% url 'software_engineering_quiz' %}" style="text-decoration: none; color: #4CAF50; font-weight: bold; font-size: 16px; margin-top: 10px;">Go back to Quiz</a>
+    </div>
+{% endblock %}
+

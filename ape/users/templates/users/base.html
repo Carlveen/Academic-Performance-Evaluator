@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+ <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+  <title>{% block title %}Academic Performance Evaluator{% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+  <style>
+    .hello-msg{
+      font-size: 18px;
+      color: #1a1a1a;
+      font-weight: 600;
+      margin-right: 20px;
+    }
+  </style>    
+ </head>
+<body>
+<section id="header">
+    <a href="#"><img src="{% static 'img/Logo-removebg-preview 2.png' %}" class="logo" alt=""></a>
+    <div>
+        <ul id="navbar">
+            <li><a class="active" href="{% url 'base' %}">Home</a></li>
+            <li><a href="{% url 'field_study' %}">Field Of Study</a></li>
+            <li><a href="{% url 'mentor' %}">Mentor</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            
+            {% if user.is_authenticated %}
+            {% if profile.profile_photo %}
+              <img src="{{ profile.profile_photo.url }}" alt="{{user.username }}'s profile image" width="20" height= "20" class="rounded-circle">
+              {% else %}
+              <img src="{% static 'img/avator.jpg' %}" alt="default avator" width="20" class="rounded-circle">
+              {% endif %}
+
+            <li><a href="{% url 'profile' %}"><span class="hello-msg">{{request.user}}</span></a></li>
+            
+            <li id="lg-bag"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a></li>
+            {% else %}
+            
+             <li id="lg-bag"><a href="{% url 'signup' %}"><i class="fa fa-sharp fa-solid   fa-user"></i></a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div id="mobile">
+        <a href="{% url 'signup' %}"><i class="fa fa-sharp fa-solid fa-user"></i></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+        
+    </div>
+</section>
+
+{% block content %}
+<section>
+  <div id="hero" >
+      <h1>Academic Performance<br> Evaluator</h1>
+      <br>
+      <h2>With hundreds of evaluation questions with their answers,<br>
+          APE gives you a wonderful platform to gauge your academic progress.</h2>
+      <a href="{% url 'field_study' %}">Click to find out what we have for you </a>
+
+  </div>
+</section>
+
+<section class="field">
+    <h1>What you get from this app</h1>
+    <p>Boost your understanding</p>
+    <div class="row">
+        <div class="field-col">
+            <h3>Evaluation of your course understanding</h3>
+            <p>Choose your field of study and choose the course, attempt the quizes and get your evaluation done</p>
+        </div>
+        <div class="field-col">
+            <h3>Feedback of the evaluation and suggestion of resources you should use to improve your Performance</h3>
+            <p>Attempt the quiz of your selected course to get feedback</p>
+        </div>
+        <div class="field-col">
+            <h3>Ask your favourite mentor, when you are stuck</h3>
+            <p>Ensure to exhaust all resources before reaching out to your mentors, they are busy!</p>
+        </div>
+    </div>
+</section>
+
+<section class="courses" id="field">
+  <h1>Fields of Study</h1>
+  <p>Select your field and choose any course for evaluation.</p>
+  <div class="row">
+    <div class="course-col">
+      <a href="{% url 'cs' %}">
+        <img src="{% static 'img/fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg' %}" alt="Computer Science">
+        <div class="layer">
+          <h3>Computer Science</h3>
+        </div>
+      </a>
+    </div>
+    <div class="course-col">
+      <a href="{% url 'telecom' %}">
+          <img src="{% static 'img/Info tech.jpg' %}" alt="Telecomm and IT">
+          <div class="layer">
+              <h3>Telecomm and IT</h3>
+          </div>
+      </a>
+  </div>
+  <div class="course-col">
+    <a href="{% url 'edusci' %}">
+        <img src="{% static 'img/education science.jpg' %}" alt="Education Science">
+        <div class="layer">
+            <h3>Education Science</h3>
+        </div>
+    </a>
+</div>
+<div class="course-col">
+  <a href="{% url 'eduart' %}">
+      <img src="{% static 'img/Education arts.jpg' %}" alt="Telecomm and IT">
+      <div class="layer">
+          <h3>Education Arts</h3>
+      </div>
+  </a>
+   </a>
+</div>
+<div class="course-col">
+  <a href="{% url 'industrial' %}">
+      <img src="{% static 'img/Industrial chem.jpg' %}" alt="Industrial Chemistry">
+      <div class="layer">
+          <h3>Industrial Chemistry</h3>
+      </div>
+  </a>
+</div>
+<div class="course-col">
+  <a href="{% url 'nursing' %}">
+      <img src="{% static 'img/Nursing.jpg' %}" alt="Nursing">
+      <div class="layer">
+          <h3>Nursing</h3>
+      </div>
+  </a>
+</div>
+</div>
+</section>
+
+<section class="contact">
+  <h1>Get more than just Evaluation</h1>
+  <a href="{% url 'contact' %}">Contact Us</a>
+</section>
+
+{% endblock %}
+
+<section class="footer">
+    <div class="cont">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>About Us</h4>
+          <p>Our main aim is to help students evaluate their academic progress for the purpose of improving their performance.</p>
+        </div>
+        <div class="col-md-4">
+          <h4>Contact Us</h4>
+          <p><i class="fas fa-phone"></i> +254740642794</p>
+          <p><i class="fas fa-envelope"></i> siimiyucalvin9@gmail.com</p>
+        </div>
+        <div class="col-md-4">
+          <h4>Follow Us</h4>
+          <div class="icon">
+            <a href="https://www.facebook.com/simiyu.calvin" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/ks_veen" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/calvin-simiyu-5b0553153/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/kevohcalvian_simiyu/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+          <p>Made with <i class="fas fa-heart"></i> by Calvin Simiyu</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block scripts %}
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(function() {
+          $('#close').on('click', function() {
+            $('#lg-bag').hide();
+          });
+        });
+      </script>
+      {% endblock %}
+<script src="{% static 'script.js' %}"></script>
+
+
+</body>
+</html>

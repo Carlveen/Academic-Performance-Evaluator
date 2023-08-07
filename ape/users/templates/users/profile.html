@@ -1,0 +1,70 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-5">{{ user.username }}'s Profile</h1>
+
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h2>Personal Details</h2>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Full Name:</strong> {{ full_name }}</li>
+            <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+            <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h2>Profile Image</h2>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-center align-items-center mb-3">
+            {% if profile.profile_photo %}
+              <img src="{{ profile.profile_photo.url }}" alt="{{user.username }}'s profile image" width="50" class="rounded-circle">
+              {% else %}
+              <img src="{% static 'img/avator.jpg' %}" alt="default avator" width="50" class="rounded-circle">
+              {% endif %}
+              </div>
+              <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+              <label for="id_profile_photo">Profile Photo:</label>
+              <input type="file" name="profile_photo" id="id_profile_photo" class="form-control-file">
+              </div>
+              <button type="submit" class="btn btn-primary">Upload</button>
+              </form>
+              </div>
+              </div>
+              </div>
+                </div>
+                <div class="row mt-5">
+                  <div class="col-md-6 mb-4">
+                    <div class="card">
+                      <div class="card-header">
+                        <h3>EVALUATION RESULTS</h3>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          {% if quiz_results %}
+                            <li class="list-group-item">Your understanding of <strong>'Programming in C Quiz'</strong> now stands at:<strong> {{ quiz_results.c_quiz_percentage }}% </strong></li>
+                          {% else %}
+                          
+                            <li class="list-group-item">No quiz results to display.</li>
+                          {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endblock %}

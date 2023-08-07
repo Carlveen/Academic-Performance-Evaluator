@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <head>
+        <title>{% block title %}Courses in Computer Science{% endblock %}</title>
+    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cs.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+  </head>
+  <body>
+  <header class="cs" style="background-color: #007bff; padding: 20px;">
+    <a href="{% url 'field_study' %}" style="text-decoration: none;">
+        <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+          Back
+        </button>
+      </a>
+      
+  <h2 style="font-size: 24px; font-weight: bold; margin-top: 20px;">Choose a course from this section, attempt the quizzes and have your evaluation</h2>
+</header>
+{% load static %}
+<main>
+    <div class="courses">
+      <div class="course">
+          <h3>Programming in C</h3>
+          <p>Have an appraisal of your<br> understanding of Cprogramming</p>
+          <a href="{% url 'programming_in_c_quiz' %}">Take Quiz</a>
+
+      </div>
+      <div class="course">
+          <h3>Java</h3>
+          <p>Have an appraisal of your<br> understanding of Java</p>
+        <a href="{% url 'java_quiz' %}">Take Quiz</a>
+      </div>
+      <div class="course">
+          <h3>Software Engineering</h3>
+          <p>Have an appraisal of your<br> understanding of Software Engineering</p>
+        <a href="{% url 'software_engineering_quiz' %}">Take Quiz</a>
+      </div>
+        <div class="course">
+            <h3>SQL</h3>
+            <p>Have an appraisal of your<br> understanding of SQL</p>
+        <a href="#">Take Quiz</a>
+      </div>
+        <div class="course">
+            <h3>Operating System</h3>
+            <p>Have an appraisal of your<br> understanding of Operating System</p>
+        <a href="#">Take Quiz</a>
+      </div>
+        <div class="course">
+            <h3>Computer Networks</h3>
+            <p>Have an appraisal of your<br> understanding of Computer Networks</p>
+        <a href="#">Take Quiz</a>
+      </div>
+        <div class="course">
+            <h3>Computer Security</h3>
+            <p>Have an appraisal of your<br> understanding of Computer Security</p>
+        <a href="#">Take Quiz</a>
+      </div>
+        <div class="course">
+            <h3>E-Commerce</h3>
+            <p>Have an appraisal of your<br> understanding of E-Commerce</p>
+        <a href="#">Take Quiz</a>
+      </div>
+        <div class="course">
+            <h3>System Analysis & Design</h3>
+            <p>Have an appraisal of your<br> understanding of System Analysis & Design</p>
+        <a href="#">Take Quiz</a>
+      </div>
+        <div class="course">
+            <h3>Computer Graphics</h3>
+            <p>Have an appraisal of your<br> understanding of Computer Graphics</p>
+        <a href="#">Take Quiz</a>
+      </div>
+        

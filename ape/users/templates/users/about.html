@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+
+{% load static %} <!-- add this line to load the static tag library -->
+
+{% block content %}
+<head>
+    <title>{% block title %}About Us{% endblock %}</title>
+</head>
+<section class="sub-header">
+    <div>
+        <h1>About Us</h1>
+    </div>
+</section>
+
+<section class="about-us">
+    <div class="row">
+        <div class="about-col">
+            <h1>An Automated Evaluation System for students</h1>
+            <p>Welcome to Academic Performance Evaluator, an innovative online platform that makes learning fun and interactive! Our mission is to provide students with a reliable and effective way to test their understanding of various subjects, while also providing immediate feedback and guidance.</p>
+            <p>Our website is designed with students in mind, and features an intuitive interface that is easy to use. With our automated evaluation system, students can take quizzes on a variety of subjects and receive scores and feedback in real-time. This allows them to identify areas where they may need additional study, and to track their progress over time.</p>
+            <p>At <b>APE</b>, we are committed to providing a high-quality learning experience for all of our users. Our team of experienced educators and technology professionals have worked tirelessly to develop a platform that is both engaging and effective. We are constantly updating and improving our website to ensure that it meets the needs of our users.</p>
+            <a href="" class="btn">EXPLORE NOW</a>
+        </div>
+        <div class="about-col">
+            <img src="{% static 'img/sergey-zolkin-_UeY8aTI6d0-unsplash.jpg' %}">
+        </div>
+    </div>
+</section>
+
+{% endblock %}

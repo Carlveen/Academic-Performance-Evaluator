@@ -1,0 +1,88 @@
+{% extends 'users/base.html' %}
+{% load static %}
+<head>
+  <title>{% block title %}Field of Study{% endblock %}</title>
+</head>
+{% block content %}
+<section class="sub-field">
+  <div>
+    <h1>Fields Of Study</h1>
+  </div>
+</section>
+
+<section class="courses" id="field">
+  <h1>What is your Field of Study?</h1>
+  <p>Select your field and choose any course for evaluation.</p>
+  <div class="row">
+    <div class="course-col">
+      <a href="{% url 'cs' %}">
+        <img src="{% static 'img/fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg' %}" alt="Computer Science">
+        <div class="layer">
+          <h3>Computer Science</h3>
+        </div>
+      </a>
+    </div>
+    <div class="course-col">
+      <a href="{% url 'telecom' %}">
+          <img src="{% static 'img/Info tech.jpg' %}" alt="Telecomm and IT">
+          <div class="layer">
+              <h3>Telecomm and IT</h3>
+          </div>
+      </a>
+  </div>
+  <div class="course-col">
+    <a href="{% url 'edusci' %}">
+        <img src="{% static 'img/education science.jpg' %}" alt="Education Science">
+        <div class="layer">
+            <h3>Education Science</h3>
+        </div>
+    </a>
+</div>
+<div class="course-col">
+  <a href="{% url 'eduart' %}">
+      <img src="{% static 'img/Education arts.jpg' %}" alt="Telecomm and IT">
+      <div class="layer">
+          <h3>Education Arts</h3>
+      </div>
+  </a>
+   </a>
+</div>
+<div class="course-col">
+  <a href="{% url 'industrial' %}">
+      <img src="{% static 'img/Industrial chem.jpg' %}" alt="Industrial Chemistry">
+      <div class="layer">
+          <h3>Industrial Chemistry</h3>
+      </div>
+  </a>
+</div>
+<div class="course-col">
+  <a href="{% url 'nursing' %}">
+      <img src="{% static 'img/Nursing.jpg' %}" alt="Nursing">
+      <div class="layer">
+          <h3>Nursing</h3>
+      </div>
+  </a>
+</div>
+</div>
+</section>
+
+<section class="field">
+  <h1>What you get from this app</h1>
+  <p>Boost your understanding</p>
+  <div class="row">
+      <div class="field-col">
+          <h3>Evaluation of your course understanding</h3>
+          <p>Choose your field of study and choose the course, attempt the quizes and get your evaluation done</p>
+      </div>
+      <div class="field-col">
+          <h3>Feedback of the evaluation and suggestion of resources you should use to improve your Performance</h3>
+          <p>Attempt the quiz of your selected course to get feedback</p>
+      </div>
+      <div class="field-col">
+          <h3>Ask your favourite mentor, when you are stuck</h3>
+          <p>Ensure to exhaust all resources before reaching out to your mentors, they are busy!</p>
+      </div>
+  </div>
+</section>
+
+{% endblock %}

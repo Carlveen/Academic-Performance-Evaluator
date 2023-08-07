@@ -1,0 +1,195 @@
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        {% if messages %}
+          <div class="alert alert-danger">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'lec' course_id=course.id %}">
+
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="course-select" class="form-label">Select Course</label>
+            <select name="course" id="course-select" class="form-select">
+              {% for c in courses %}
+                <option value="{{ c.id }}" {% if c.id == course.id %}selected{% endif %}>{{ c.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Select</button>
+        </form>
+
+        <hr>
+        {% if course %}
+
+        <a href="{% url 'score' course_id=course.id %}" class="btn btn-primary mb-3">View Scores</a>
+        {% endif %}
+
+        <h1 id="add-question-heading">Add Questions for {{ course.title }}</h1>
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ question_form.as_p }}
+          {{ choice_formset.management_form }}
+          {% for form in choice_formset %}
+            {{ form.as_p }}
+          {% endfor %}
+          <input type="hidden" id="id_form-TOTAL_FORMS" name="form-TOTAL_FORMS" value="{{ choice_formset.total_form_count }}">
+          <input type="hidden" id="id_form-INITIAL_FORMS" name="form-INITIAL_FORMS" value="{{ choice_formset.initial_form_count }}">
+          <input type="hidden" id="id_form-MIN_NUM_FORMS" name="form-MIN_NUM_FORMS" value="{{ choice_formset.min_num }}">
+          <input type="hidden" id="id_form-MAX_NUM_FORMS" name="form-MAX_NUM_FORMS" value="{{ choice_formset.max_num }}">
+          <input type="hidden" name="course" value="{{ course.id }}">
+          <input type="submit" value="Save" class="btn btn-primary mt-3">
+        </form>
+        {% if question_form.errors %}
+          <div class="alert alert-danger">
+            {% for field_errors in question_form.errors %}
+              {% for error in field_errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {{ choice_formset.management_form }}
+
+        {% for form in choice_formset %}
+          {% if form.errors %}
+            <div class="alert alert-danger">
+              {% for field_errors in form.errors %}
+                {% for error in field_errors %}
+                  <p>{{ form.prefix }} - {{ form.choice_text.label }} - {{ error }}</p>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body {
+      background-color: #F5F5F5;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border-top: 2px solid #ddd;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .form-label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    .form-select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #333;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: #0069d9;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px #ccc;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    .mt-5 {
+      margin-top: 50px;
+    }
+    
+    .mb-3 {
+      margin-bottom: 30px;
+    }
+    
+    .choice-formset {
+      margin-top: 30px;
+    }
+    
+    .choice-form {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    
+    .alert {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    
+    .alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+    }
+    
+    input[type="submit"] {
+      margin-top: 20px;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #0069d9;
+    }
+    
+  </style>
+
+  <script>
+    const courseSelect = document.getElementById('course-select');
+    const addQuestionHeading = document.getElementById('add-question-heading');
+    
+    courseSelect.addEventListener('change', () => {
+      const selectedCourse = courseSelect.options[courseSelect.selectedIndex].text;
+      addQuestionHeading.textContent = `Add Questions for ${selectedCourse}`;
+    });
+  </script>
+  
+{% endblock %}
+

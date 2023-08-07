@@ -1,0 +1,34 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <div style="background-color: #f2f2f2; padding: 20px;">
+        <h2 style="color: #4CAF50;">{{ course.title }} Quiz</h2>
+        <form method="post" style="margin-top: 20px;">
+            {% csrf_token %}
+            {% for question in quiz_questions %}
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: blue; font-weight: bold;">{{ forloop.counter }}. {{ question.question_text }}</h4>
+                    
+                    {% if question.code_snippet %}
+                        <pre style="background-color: #f8f8f8; padding: 10px; border-radius: 4px; margin-bottom: 10px;">{{ question.code_snippet }}</pre>
+                    {% endif %}
+                    
+                    <ul style="list-style-type: none; padding-left: 0; margin-top: 0;">
+                        {% for choice in question.choices %}
+                            <li style="margin-top: 10px;">
+                                <label>
+                                    <input type="radio" name="question-{{ question.id }}" value="{{ choice.id }}">
+                                    {{ choice.choice_text }}
+                                </label>
+                                {% if choice.code_snippet %}
+                                    <pre style="background-color: #f8f8f8; padding: 10px; border-radius: 4px; margin-top: 5px;">{{ choice.code_snippet }}</pre>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-success">Submit Quiz</button>
+        </form>
+    </div>
+{% endblock %}
